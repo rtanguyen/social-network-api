@@ -13,7 +13,7 @@ const thoughtsController = {
     getThoughtById({ params }, res) {
         Thoughts.findOne({ _id: params.id })
         .then(dbThoughtsData => {
-            if(!dbUserData) {
+            if(!dbThoughtsData) {
                 res.status(404).json({ message: 'no thoughts just vibes' });
                 return;
             }
@@ -26,12 +26,13 @@ const thoughtsController = {
     },
 
     addThought({ params, body }, res) {
+        console.log(body);
         Thoughts.create(body)
         .then(({ _id }) => {
             return User.findOneAndUpdate(
                 { _id: params.userId },
                 { $push: { thoughts: _id }},
-                { new: true, runValidators: true }
+                { new: true }
             );
         })
         .then(dbThoughtsData => {

@@ -30,8 +30,7 @@ const ThoughtsSchema = new Schema(
     {
         thoughtText: {
             type: String,
-            unique: true,
-            required: 'username is required!',
+            required: 'required!',
             minLength: 1,
             maxLength: 280
         },
@@ -43,9 +42,7 @@ const ThoughtsSchema = new Schema(
         username: 
             {
                 type: String,
-                unique: true,
                 required: 'username is required!',
-                trimmed: true
             },
         reactions: [ReactionSchema]
     },
@@ -53,7 +50,8 @@ const ThoughtsSchema = new Schema(
         toJSON: {
             virtuals: true,
             getters: true
-        }
+        },
+        id: false
     }
 );
 

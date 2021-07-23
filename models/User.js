@@ -14,23 +14,24 @@ const UserSchema = new Schema(
             required: 'email is required!',
             match: [/.+@.+\..+/]
         },
-        // thoughts: [
-        //     {
-        //         type: Schema.Types.ObjectId,
-        //         ref: 'Thoughts'
-        //     }
-        // ],
-        // friends: [
-        //     {
-        //         type: Schema.Types.ObjectId,
-        //         ref: 'User'
-        //     }
-        // ]
+        thoughts: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Thoughts'
+            }
+        ],
+        friends: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'User'
+            }
+        ]
     },
     {
         toJSON: {
             virtuals: true
-        }
+        },
+        id: false
     }
 );
 
