@@ -12,12 +12,13 @@ const{
 // /api/thoughts
 router
     .route('/')
-    .get(getAllThoughts);
-
+    .get(getAllThoughts)
+    .post(addThought);
+    
 // /api/thoughts/:userId
 router
     .route('/:userId')
-    .post(addThought);
+
 
 //api/thoughts/:id
 router
